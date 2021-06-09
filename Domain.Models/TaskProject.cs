@@ -13,5 +13,7 @@ namespace Domain.Models
         public TaskType TaskType { get; set; }
         public User Users { get; set; }
         public Project Project { get; set; }
+
+ 
     }
 }

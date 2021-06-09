@@ -13,6 +13,8 @@ namespace WorkingTimeTracking.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public ILogger<HomeController> Logger => _logger;
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;

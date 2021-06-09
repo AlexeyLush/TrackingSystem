@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.DataAccess\\Domain.DataAccess.csproj": {}
+    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.DataAccess\\Domain.DataAccess.csproj": {
+    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.DataAccess\\Domain.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
         "projectName": "Domain.DataAccess",
-        "projectPath": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.DataAccess\\Domain.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\bashk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\bashk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\Domain.Models.csproj"
+              "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
+                "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj"
               }
             }
           }
@@ -48,6 +48,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "CoreAdmin": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.6, )"
@@ -82,26 +86,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\Domain.Models.csproj": {
+    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\Domain.Models.csproj",
+        "projectUniqueName": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
         "projectName": "Domain.Models",
-        "projectPath": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\Domain.Models.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\source\\repos\\WorkingTimeTracking\\Domain.Models\\obj\\",
+        "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
+        "packagesPath": "C:\\Users\\bashk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\bashk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -126,6 +130,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "CoreAdmin": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -150,7 +158,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
