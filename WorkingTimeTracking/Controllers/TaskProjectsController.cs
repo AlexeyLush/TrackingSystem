@@ -19,33 +19,25 @@ namespace WorkingTimeTracking.Controllers
             _context = context;
         }
 
-        //GET: TaskProjects
-        //GET: TaskProjects
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Tasks.ToListAsync());
-        //}
+        public RedirectResult Redirect()
+        {
+            return Redirect("~/PersonalStatics/Index");
+        }
+
+
 
         public async Task<IActionResult> Index(string search)
         {
             ViewData["GetNamesdetails"] = search;
 
             var query = from x in _context.Tasks select x;
-            if(!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrEmpty(search))
             {
                 query = query.Where(x => x.Title.Contains(search));
             }
 
             return View(await query.AsNoTracking().ToListAsync());
         }
-
-        //[HttpPost]
-        //public string Index(string searchString, bool notUsed)
-        //{
-        //    return "From [HttpPost]Index: filter on " + searchString;
-        //}
-
-        // GET: TaskProjects/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)

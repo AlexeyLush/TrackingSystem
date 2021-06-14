@@ -4,14 +4,16 @@ using Domain.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Domain.DataAccess.Migrations
 {
     [DbContext(typeof(TrackingDb))]
-    partial class TrackingDbModelSnapshot : ModelSnapshot
+    [Migration("20210610151106_Statics")]
+    partial class Statics
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

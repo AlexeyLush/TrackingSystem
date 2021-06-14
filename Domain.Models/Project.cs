@@ -10,5 +10,6 @@ namespace Domain.Models
         public string Title { get; set; }
         public IList<User> Users { get; set; }
         public IList<TaskProject> Tasks { get; set; }
+        public IList<PersonalStatic> PersonalStatics { get; set; }
     }
 }

@@ -2,72 +2,75 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 
@@ -76,44 +79,53 @@ body {
     box-sizing: border-box;
 }
 
-.formc form {
-    position: relative;
-    width: 300px;
+    .formc form {
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .formc input, button {
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+
+    .formc input {
+        width: 100%;
+        height: 42px;
+        background: #F9F0DA;
+        padding-left: 15px;
+    }
+
+    .formc button {
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #F15B42;
+        cursor: pointer;
+    }
+  
+        .formc button:before {
+            content: "\f105";
+            font-family: FontAwesome;
+            color: #F9F0DA;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+.first {
+    display: flex;
+}
+
+
+
+.current-date {
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
 
-.formc input, button {
-    border: none;
-    outline: none;
-    border-radius: 3px;
-}
-
-.formc input {
-    width: 100%;
-    height: 42px;
-    background: #F9F0DA;
-    padding-left: 15px;
-}
-
-.formc button {
-    height: 26px;
-    width: 26px;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #F15B42;
-    cursor: pointer;
-}
-
-    .formc button:before {
-        content: "\f105";
-        font-family: FontAwesome;
-        color: #F9F0DA;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-
-    .first{
-        display:flex;
-    }

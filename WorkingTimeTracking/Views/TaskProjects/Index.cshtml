@@ -24,11 +24,10 @@
 <div class="first">
 
 
-    <button type="button" class="btn btn-primary">Посмотреть персональную статистику</button>
+    <a asp-action="Redirect" class="btn btn-info">Посмотреть персональную статистику</a>
 
-    <p style="text-align:center">
-        Сегодня:
-        @Html.Label("DateCreated", DateTime.Today.ToShortDateString().ToString(), new { @readonly = "readonly" })
+    <p class="current-date">
+        Сегодня: @DateTime.Today.ToShortDateString().ToString()
     </p>
 
     <form style="float:right" class="formc" method="get" asp-action="Index">
@@ -63,7 +62,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a asp-route-id="@item.Id" asp-action="Edit">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
@@ -82,4 +81,4 @@
             </tr>
         }
     </tbody>
-</table>
+    </table>

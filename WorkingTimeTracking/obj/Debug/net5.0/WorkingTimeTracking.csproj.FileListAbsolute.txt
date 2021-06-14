@@ -263,3 +263,4 @@ C:\Users\bashk\source\repos\TrackingSystem\WorkingTimeTracking\bin\Debug\net5.0\
 C:\Users\bashk\source\repos\TrackingSystem\WorkingTimeTracking\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\bashk\source\repos\TrackingSystem\WorkingTimeTracking\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\bashk\source\repos\TrackingSystem\WorkingTimeTracking\bin\Debug\net5.0\Mvc.Grid.Core.dll
+C:\Users\bashk\source\repos\TrackingSystem\WorkingTimeTracking\obj\Debug\net5.0\Razor\Views\PersonalStatics\Index.cshtml.g.cs

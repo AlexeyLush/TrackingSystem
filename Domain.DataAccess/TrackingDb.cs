@@ -9,6 +9,7 @@ namespace Domain.DataAccess
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<TaskProject> Tasks { get; set; }
+        public DbSet<PersonalStatic> PersonalStatics { get; set; }
 
         public TrackingDb(DbContextOptions<TrackingDb> options) : base(options)
         {
