@@ -67,7 +67,7 @@ namespace WorkingTimeTracking
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=TaskProjects}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

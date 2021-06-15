@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj": {}
+    "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {
+    "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
         "projectName": "Domain.DataAccess",
-        "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\bashk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\bashk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj"
+              "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
+                "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj"
               }
             }
           }
@@ -90,22 +90,22 @@
         }
       }
     },
-    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
+    "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
         "projectName": "Domain.Models",
-        "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
-        "packagesPath": "C:\\Users\\bashk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\obj\\",
+        "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\bashk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -162,22 +162,22 @@
         }
       }
     },
-    "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj": {
+    "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj",
         "projectName": "WorkingTimeTracking",
-        "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj",
-        "packagesPath": "C:\\Users\\bashk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\WorkingTimeTracking\\obj\\",
+        "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\WorkingTimeTracking\\WorkingTimeTracking.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\WorkingTimeTracking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\bashk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -190,11 +190,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj"
+              "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.DataAccess\\Domain.DataAccess.csproj"
               },
-              "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\bashk\\source\\repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj"
+              "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj": {
+                "projectPath": "C:\\Users\\Alex\\Source\\Repos\\TrackingSystem\\Domain.Models\\Domain.Models.csproj"
               }
             }
           }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Models.PersonalStatic>
+﻿@model IEnumerable<Domain.Models.TaskProject>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,51 +9,94 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+
+@*<form asp-controller="TaskProjects" asp-action="Index" method="get">
+        <p>
+            Title: <input type="text" placeholder="Search.." name="search2" />
+            <input style="float: right" type="submit" value="Filter" />
+        </p>
+    </form>*@
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<div class="first">
+
+
+    <a asp-action="Redirect" class="btn btn-info">Посмотреть персональную статистику</a>
+
+    <p class="current-date">
+        Сегодня: @DateTime.Today.ToShortDateString().ToString()
+    </p>
+
+    <form style="float:right" class="formc" method="get" asp-action="Index">
+        <input style="float:right" type="search" value="@ViewData["GetNamesdetails"]" placeholder="Искать здесь..." name="search">
+        <button style="float: right" type="submit"></button>
+    </form>
+
+</div>
+
+<style type="text/css">
+    .deadline__soon {
+        background-color: orange;
+    }
+</style>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NameOfProject)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NameofTask)
+                @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeOfWorkToday)
+                @Html.DisplayNameFor(model => model.EndDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeOfWorkAllTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusOfTask)
+                @Html.DisplayNameFor(model => model.TaskType)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameOfProject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameofTask)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOfWorkToday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOfWorkAllTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusOfTask)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        @foreach (var item in Model)
+        {
+            var taskStatus = "table-primary";
+            if (item.EndDate > DateTime.Now)
+            {
+                taskStatus = "table-danger";
+            }
+            else if ((item.EndDate - DateTime.Now).TotalDays < 3)
+            {
+                taskStatus = "table-warning";
+            }
+            else if ((item.EndDate - DateTime.Now).TotalDays < 1)
+            {
+                taskStatus = "deadline__soon";
+            }
+            <tr class="@taskStatus"></tr>
+            <tr>
+                <td>
+                    <a asp-route-id="@item.Id" asp-action="Edit">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskType)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+         }
+        </tbody>
+    </table>
