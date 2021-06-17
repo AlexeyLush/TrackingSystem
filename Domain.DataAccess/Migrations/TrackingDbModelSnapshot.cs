@@ -79,7 +79,7 @@ namespace Domain.DataAccess.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("ProjectId")
+                    b.Property<Guid>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("StartDate")
@@ -91,14 +91,20 @@ namespace Domain.DataAccess.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsersId")
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("isEnd")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Tasks");
                 });
@@ -344,17 +350,15 @@ namespace Domain.DataAccess.Migrations
 
             modelBuilder.Entity("Domain.Models.TaskProject", b =>
                 {
-                    b.HasOne("Domain.Models.Project", "Project")
+                    b.HasOne("Domain.Models.Project", null)
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Domain.Models.User", "Users")
+                    b.HasOne("Domain.Models.User", null)
                         .WithMany("Tasks")
-                        .HasForeignKey("UsersId");
-
-                    b.Navigation("Project");
-
-                    b.Navigation("Users");
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

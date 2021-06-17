@@ -1,12 +1,21 @@
 ﻿@model Domain.Models.TaskProject
+@using Domain.DataAccess
+
+
+@inject TrackingDb Context
+
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+
+
 @using Domain.Models
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавить задачу";
 }
 
-<h1>Create</h1>
+<h1>Добавить задачу</h1>
 
-<h4>TaskProject</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +27,15 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class="form-control">
+                    @foreach (var project in Context.Projects.ToList())
+                    {
+                        <option value="@project.Id">@project.Title</option>
+                    }
+
+                </select>
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TaskType" class="control-label"></label>
@@ -36,15 +46,38 @@
                 </select>
                 <span asp-validation-for="TaskType" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control">
+                    @foreach (var user in Context.Users.Where(x => x.UserType == UserType.DefaultUser).ToList())
+                    {
+                        <option value="@user.Id">@user.Email</option>
+                    }
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться назад</a>
 </div>
 
 @section Scripts {

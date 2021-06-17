@@ -21,16 +21,16 @@ namespace WorkingTimeTracking.Controllers
 
         public async Task<IActionResult> Index()
         {
-            PersonalStatic personalStatic = new PersonalStatic();
-            TaskProject taskProject = new TaskProject();
-            personalStatic.NameOfProject = taskProject.Title;
-            personalStatic.NameofTask = taskProject.Title;
-            personalStatic.TimeOfWorkToday = DateTime.Now;
-            personalStatic.TimeOfWorkAllTime = DateTime.Now;
-            personalStatic.StatusOfTask = true;
-            return View(await _context.PersonalStatics.ToListAsync());
+            var user = _context.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+            return View(await _context.Tasks.Where(x => x.UserId.ToString() == user.Id).ToListAsync());
         }
 
-
+        public async Task<IActionResult> Complete(Guid id)
+        {
+            var task = _context.Tasks.FirstOrDefault(x => x.Id == id);
+            task.isEnd = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }

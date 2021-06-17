@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models
 {
@@ -8,7 +9,8 @@ namespace Domain.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UserType UserType { get; set; }
+        [Display(Name = "Тип пользователя")]
+        public UserType UserType { get; set; } = UserType.DefaultUser;
         public IList<Project> Projects { get; set; }
         public IList<TaskProject> Tasks { get; set; }
     }

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WorkingTimeTracking"
+    "\\WorkingTimeTracking",
+    "\\WorkingTimeTracking\\Views",
+    "\\WorkingTimeTracking\\Views\\TaskProjects"
   ],
-  "SelectedNode": "\\WorkingTimeTracking\\Startup.cs",
+  "SelectedNode": "\\WorkingTimeTracking\\Views\\TaskProjects\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }

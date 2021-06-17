@@ -1,14 +1,31 @@
 ﻿@model IEnumerable<Domain.Models.TaskProject>
+@using Domain.DataAccess
+@using Domain.Models
+
+
+@inject TrackingDb Context
+
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Персональная статисткиа";
 }
 
-<h1>Index</h1>
+<h1>Список задач (персональная)</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (SignInManager.IsSignedIn(User))
+{
+    if (Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Admin || Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Manager)
+    {
+        <p>
+            <a asp-action="Create">Добавить задачу</a>
+        </p>
+    }
+}
+
 
 
 @*<form asp-controller="TaskProjects" asp-action="Index" method="get">
@@ -18,36 +35,33 @@
         </p>
     </form>*@
 
-<link rel="stylesheet" href="~/css/site.css" />
 
 
-<div class="first">
+<div class="first" style="margin-top: 50px;">
 
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if (Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.DefaultUser)
+        {
+            <a asp-action="Redirect" class="btn btn-info" style="margin-right: 20px;">Посмотреть персональную статистику</a>
+        }
+    }
 
-    <a asp-action="Redirect" class="btn btn-info">Посмотреть персональную статистику</a>
-
-    <p class="current-date">
-        Сегодня: @DateTime.Today.ToShortDateString().ToString()
-    </p>
-
-    <form style="float:right" class="formc" method="get" asp-action="Index">
-        <input style="float:right" type="search" value="@ViewData["GetNamesdetails"]" placeholder="Искать здесь..." name="search">
-        <button style="float: right" type="submit"></button>
-    </form>
 
 </div>
 
-<style type="text/css">
-    .deadline__soon {
-        background-color: orange;
-    }
-</style>
 
-<table class="table">
+<table class="table" style="margin-top: 10px;">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ProjectId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
@@ -58,6 +72,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.TaskType)
             </th>
+            <th>
+                Статус
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -65,38 +83,109 @@
         @foreach (var item in Model)
         {
             var taskStatus = "table-primary";
-            if (item.EndDate > DateTime.Now)
-            {
-                taskStatus = "table-danger";
-            }
-            else if ((item.EndDate - DateTime.Now).TotalDays < 3)
+            if ((item.EndDate - DateTime.Now).TotalDays < 3)
             {
                 taskStatus = "table-warning";
             }
-            else if ((item.EndDate - DateTime.Now).TotalDays < 1)
+            if ((item.EndDate - DateTime.Now).TotalDays < 1)
             {
                 taskStatus = "deadline__soon";
             }
-            <tr class="@taskStatus"></tr>
+            if ((item.EndDate - DateTime.Now).TotalDays < 0)
+            {
+                taskStatus = "table-danger";
+            }
+            if (item.isEnd)
+            {
+                taskStatus = "table-success";
+            }
             <tr>
                 <td>
-                    <a asp-route-id="@item.Id" asp-action="Edit">@Html.DisplayFor(modelItem => item.Title)</a>
+                    @Html.DisplayFor(modelItem => Context.Projects.FirstOrDefault(x => x.Id == item.ProjectId).Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        if (Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Admin || Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Manager)
+                        {
+                            <a asp-route-id="@item.Id" asp-action="Edit">@Html.DisplayFor(modelItem => item.Title)</a>
+                        }
+                        else
+                        {
+                            <a>@Html.DisplayFor(modelItem => item.Title)</a>
+                        }
+                    }
+                    else
+                    {
+                        <a>@Html.DisplayFor(modelItem => item.Title)</a>
+                    }
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
+                    @Html.DisplayFor(modelItem => Context.Users.FirstOrDefault(x => x.Id == item.UserId.ToString()).Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TaskType)
+                    @item.StartDate.ToString("dd/MM/yyyy")
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @item.EndDate.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @if (item.TaskType == TaskType.Analytics)
+                    {
+                        <span>Аналитика</span>
+                    }
+                    else if (item.TaskType == TaskType.Documenting)
+                    {
+                        <span>Документирование</span>
+                    }
+                    else if (item.TaskType == TaskType.Programming)
+                    {
+                        <span>Программирование</span>
+                    }
+                </td>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    if (Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Admin || Context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).UserType == UserType.Manager)
+                    {
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                        </td>
+                    }
+                }
+                <td class="@taskStatus">
+                    @if (taskStatus == "table-primary")
+                    {
+                        <span>Активно</span>
+                    }
+                    else if (taskStatus == "table-danger")
+                    {
+                        <span>Просрочено</span>
+
+                    }
+                    else if (taskStatus == "table-warning")
+                    {
+                        <span>Менее 3 дней</span>
+                    }
+                    else if (taskStatus == "deadline__soon")
+                    {
+                        <span>Менее дня</span>
+                    }
+                    else if (taskStatus == "table-success")
+                    {
+                        <span>Выполнено</span>
+                    }
+                </td>
+                <td>
+                    @if (!item.isEnd)
+                    {
+                        <a class="btn btn-success" asp-action="Complete" asp-route-id="@item.Id">Выполнено</a>
+                    }
+
                 </td>
             </tr>
-         }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
+

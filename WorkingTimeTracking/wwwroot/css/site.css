@@ -1,6 +1,5 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+﻿deadline__soon /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -10,6 +9,11 @@ a.navbar-brand {
 /* Provide sufficient contrast against white background */
 a {
     color: #0366d6;
+}
+
+
+.deadline__soon{
+    background-color: orange;
 }
 
 .btn-primary {
@@ -77,6 +81,7 @@ body {
 
 .formc {
     box-sizing: border-box;
+    display: flex;
 }
 
     .formc form {
@@ -99,23 +104,13 @@ body {
     }
 
     .formc button {
-        height: 26px;
-        width: 26px;
-        position: absolute;
-        top: 8px;
-        right: 8px;
+        height: 100%;
+        width: 50px;
+        margin-left: 8px;
         background: #F15B42;
         cursor: pointer;
     }
   
-        .formc button:before {
-            content: "\f105";
-            font-family: FontAwesome;
-            color: #F9F0DA;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
 
 .first {
     display: flex;

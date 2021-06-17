@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Domain.DataAccess;
 using Domain.Models;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace WorkingTimeTracking.Controllers
 {
@@ -23,7 +25,6 @@ namespace WorkingTimeTracking.Controllers
         {
             return Redirect("~/PersonalStatics/Index");
         }
-
 
 
         public async Task<IActionResult> Index(string search)
@@ -55,21 +56,31 @@ namespace WorkingTimeTracking.Controllers
             return View(taskProject);
         }
 
-        // GET: TaskProjects/Create
+
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TaskProjects/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,StartDate,EndDate,TaskType")] TaskProject taskProject)
+        public async Task<IActionResult> Create(TaskProject taskProject)
         {
             if (ModelState.IsValid)
             {
+
+                if (taskProject.StartDate < DateTime.Now)
+                {
+                    ModelState.AddModelError(string.Empty, "Дата началы должна быть как минимум со следующего дня");
+                    return View(taskProject);
+                }
+
+                if (taskProject.EndDate <= taskProject.StartDate)
+                {
+                   ModelState.AddModelError(string.Empty, "Дата окончания должна быть больше даты начала");
+                   return View(taskProject);
+                }
                 taskProject.Id = Guid.NewGuid();
                 _context.Add(taskProject);
                 await _context.SaveChangesAsync();
@@ -94,12 +105,10 @@ namespace WorkingTimeTracking.Controllers
             return View(taskProject);
         }
 
-        // POST: TaskProjects/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,StartDate,EndDate,TaskType")] TaskProject taskProject)
+        public async Task<IActionResult> Edit(Guid id, TaskProject taskProject)
         {
             if (id != taskProject.Id)
             {
@@ -108,6 +117,17 @@ namespace WorkingTimeTracking.Controllers
 
             if (ModelState.IsValid)
             {
+                if (taskProject.StartDate < DateTime.Now)
+                {
+                    ModelState.AddModelError(string.Empty, "Дата началы должна быть как минимум со следующего дня");
+                    return View(taskProject);
+                }
+
+                if (taskProject.EndDate <= taskProject.StartDate)
+                {
+                    ModelState.AddModelError(string.Empty, "Дата окончания должна быть больше даты начала");
+                    return View(taskProject);
+                }
                 try
                 {
                     _context.Update(taskProject);
@@ -137,30 +157,88 @@ namespace WorkingTimeTracking.Controllers
                 return NotFound();
             }
 
-            var taskProject = await _context.Tasks
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var taskProject = await _context.Tasks.FindAsync(id);
             if (taskProject == null)
             {
                 return NotFound();
             }
 
-            return View(taskProject);
-        }
-
-        // POST: TaskProjects/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var taskProject = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(taskProject);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+
         private bool TaskProjectExists(Guid id)
         {
             return _context.Tasks.Any(e => e.Id == id);
+        }
+
+        public IActionResult Excel()
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Задачи");
+                var currentRow = 1;
+                worksheet.Cell(currentRow, 1).Value = "Проект";
+                worksheet.Cell(currentRow, 2).Value = "Задача";
+                worksheet.Cell(currentRow, 3).Value = "Пользователь";
+                worksheet.Cell(currentRow, 4).Value = "Начло";
+                worksheet.Cell(currentRow, 5).Value = "Конец";
+                worksheet.Cell(currentRow, 6).Value = "Тип";
+                worksheet.Cell(currentRow, 7).Value = "Статус";
+                foreach (var task in _context.Tasks.ToList())
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = _context.Projects.FirstOrDefault(x => x.Id == task.ProjectId).Title;
+                    worksheet.Cell(currentRow, 2).Value = task.Title;
+                    worksheet.Cell(currentRow, 3).Value = _context.Users.FirstOrDefault(x => x.Id == task.UserId.ToString()).Email;
+                    worksheet.Cell(currentRow, 4).Value = task.StartDate.ToString("dd/MM/yyyy");
+                    worksheet.Cell(currentRow, 5).Value = task.EndDate.ToString("dd/MM/yyyy");
+
+                    if (task.TaskType == TaskType.Analytics)
+                    {
+                        worksheet.Cell(currentRow, 6).Value = "Аналитика";
+                    }
+                    else if (task.TaskType == TaskType.Documenting)
+                    {
+                        worksheet.Cell(currentRow, 6).Value = "Документирование";
+                    }
+                    else if (task.TaskType == TaskType.Programming)
+                    {
+                        worksheet.Cell(currentRow, 6).Value = "Программирование";
+                    }
+
+                    worksheet.Cell(currentRow, 7).Value = "Активно";
+                    if ((task.EndDate - DateTime.Now).TotalDays < 3)
+                    {
+                        worksheet.Cell(currentRow, 7).Value = "Менее 3 дней";
+                    }
+                    if ((task.EndDate - DateTime.Now).TotalDays < 1)
+                    {
+                        worksheet.Cell(currentRow, 7).Value = "Менее дня";
+                    }
+                    if ((task.EndDate - DateTime.Now).TotalDays < 0)
+                    {
+                        worksheet.Cell(currentRow, 7).Value = "Просрочено";
+                    }
+                    if (task.isEnd)
+                    {
+                        worksheet.Cell(currentRow, 7).Value = "Выполнено";
+                    }
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    return File(
+                        content,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "tasks.xlsx");
+                }
+            }
         }
     }
 }
